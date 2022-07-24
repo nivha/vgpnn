@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="keywords" content="VGPNN, VPNN">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VGPNN: Diverse Generation from a Single Video Made Possible</title>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="../static/css/bulma.min.css">
+  <link rel="stylesheet" href="../static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="../static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="../static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="../static/js/fontawesome.all.min.js"></script>
+  <script src="../static/js/bulma-carousel.min.js"></script>
+  <script src="../static/js/bulma-slider.min.js"></script>
+  <script src="../static/js/index.js"></script>
+</head>
+<body>
+
+
+<!-- Top. -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Diverse Generation from a Single Video Made Possible</h1>
+					<h2 class="title is-2 publication-title">Supplementary Material</h2>
+					<div class="content has-text-centered is-size-4">
+						This page contains many videos, please give it a minute to load
+						<br/>
+						<span style="color: red; font-weight: bold;"> If a video does not appear - please Refresh (F5) </span>
+					</div>
+
+          <div class="column has-text-centered">
+              <span class="link-block"><a href="../index.html" class="external-link button is-normal is-rounded is-dark">Back to Main</a></span>
+							<br/>
+							<!-- <span class="link-block"><a href="#main" class="external-link button is-normal is-rounded is-dark">Analogies</a></span> -->
+							<!-- <span class="link-block"><a href="#sketch2vid" class="external-link button is-normal is-rounded is-dark">Sketch-To-Video</a></span> -->
+							<!-- <span class="link-block"><a href="#analogies" class="external-link button is-normal is-rounded is-dark">More Analogies</a></span> -->
+							<span class="link-block"><a href="#ablations" class="external-link button is-normal is-rounded is-dark">Ablations</a></span>
+							<span class="link-block"><a href="#recyclegan" class="external-link button is-normal is-rounded is-dark">Comparison to Recycle-GAN</a></span>
+          </div>
+					
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="hero">
+  <div class="hero-body">
+		<div class="container is-full-width">					
+					
+					<h2 class="title is-3" id="ablations">Ablation of auxiliary channel used for analogies</h2>
+
+					
+					<div class="columns is-centered">
+						<div class="column">
+
+					<div class="columns is-justified">
+						<div class="column is-12 is-size-5">
+            RGB Only (no auxiliary) largely fails or results in major "smears" (see e.g., lava in 5th row). 
+						<br/>
+						Only Optical-Flow-Norm (magnitude; no quantization) works better but fails to map the different dynamic types (see e.g., water type in 2nd row)
+						<br/>
+						Quantized Normed OF (our results, last column) finds a good mapping.
+						</div>
+					</div>
+
+					<!-- <br/> -->
+
+			
+			
+				<!-- <div class="content is-centered is-borderless" style="text-align: center"> -->
+						<table class="analogies-table" style="width:100%;">
+								<tr class="has-text-centered has-text-weight-bold	is-size-5">
+									<td width=20%>Layout</td><td width=20%>Appearance</td><td width=20%>RGB Only<br/>(No Auxiliary)</td><td width=20%>RGB + OF Norm <br/> (No Quantization)</td><td width=20%>Full Results <br/>(OF + Quantization)</td>
+								</tr>
+								<tr>
+										<td>
+												<video class="vid_analogies_gt" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/lava.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies_gt" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/meat.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/ablation/lava2meat_raw.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/ablation/lava2meat_norm.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/lava2meat.mp4" type="video/mp4">
+												</video>
+										</td>
+								</tr>
+								<tr>
+										<td>
+												<video class="vid_analogies_gt" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/lava.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies_gt" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/waterfall.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/ablation/lava2waterfall_raw.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/ablation/lava2waterfall_norm.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/lava2waterfall.mp4" type="video/mp4">
+												</video>
+										</td>
+								</tr>
+								<tr>
+										<td>
+												<video class="vid_analogies_gt" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/meat.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies_gt" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/waterfall.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/ablation/meat2waterfall_raw.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/ablation/meat2waterfall_norm.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/meat2waterfall.mp4" type="video/mp4">
+												</video>
+										</td>
+								</tr>
+								<tr>
+										<td>
+												<video class="vid_analogies_gt" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/waterfall.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies_gt" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/meat.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/ablation/waterfall2meat_raw.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/ablation/waterfall2meat_norm.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/waterfall2meat.mp4" type="video/mp4">
+												</video>
+										</td>
+								</tr>
+								<tr>
+										<td>
+												<video class="vid_analogies_gt" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/meat.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies_gt" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/lava.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/ablation/meat2lava_raw.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies"autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/ablation/meat2lava_norm.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/meat2lava.mp4" type="video/mp4">
+												</video>
+										</td>
+								</tr>
+								<tr>
+										<td>
+												<video class="vid_analogies_gt analogies_w" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/meat.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies_gt analogies_h" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/sheep.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/ablation/meat2sheep_raw.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/ablation/meat2sheep_norm.mp4" type="video/mp4">
+												</video>
+										</td><td>
+												<video class="vid_analogies" autoplay controls muted loop height="100%">
+														<source src="../vids/analogies/matrix/meat2sheep.mp4" type="video/mp4">
+												</video>
+										</td>
+								</tr>
+						</table>
+				<!-- </div> -->
+
+										</div>
+					</div>
+
+
+		</div>
+	</div>
+</section>
+
+
+				<!-- <br/> -->
+				<div class="columns is-centered">
+					<div class="column has-text-centered has-text-weight-bold">
+						<a href="#top" class="external-link button is-medium is-warning">Back to Top</a>
+					</div>
+				</div>
+				
+<section class="hero is-light">
+  <div class="hero-body">
+		<div class="container is-full-width">
+
+
+					<h2 class="title is-3" id="recyclegan">Comparison to Recycle-GAN [Bansal et al. 2018]</h2>
+					<div class="columns is-justified">
+						<div class="column is-12 is-size-5">
+						Note Recycle-GAN (3rd column) either fail to converge on correct appearance, or converges to the input-appearance-video.
+							<br/>
+							(<span class="has-text-weight-bold">Runtimes:</span>
+							<!-- <br/> -->
+							Recycle-GAN - 16 minutes per 2 outputs (50 epochs, 20 seconds per epoch).
+							<!-- <br/> -->
+							Ours - 1 minute per output).
+							<br/>
+							We trained Recycle-GAN with several learning rates and for many epoch. We chose what looked like the best results.
+							<!-- We use epoch number 50 for Recycle-GAN's results, which seems to give the best tradeofff between content and style (and see evolution per epoch comparisons below). We also tried using several learning rates, but the results seemed similar nevertheless. -->
+							<!-- <br/> -->
+						</div>
+					</div>
+
+					
+					<div class="columns is-centered">
+						<div class="column">
+
+
+
+
+
+<table style="width:100%;">
+		<tr class="has-text-centered has-text-weight-bold	is-size-4">
+			<td>Layout</td><td>Appearance</td><td>Recycle-GAN</td><td>Ours</td>
+		</tr>
+    <tr>
+        <td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/waterfall.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/lava.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/lava2waterfall_50.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/matrix/waterfall2lava.mp4" type="video/mp4">
+            </video>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/lava.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/waterfall.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/waterfall2lava_50.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/matrix/lava2waterfall.mp4" type="video/mp4">
+            </video>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/waterfall.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/meat.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/meat2waterfall_50.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/matrix/waterfall2meat.mp4" type="video/mp4">
+            </video>
+        </td>
+    </tr>
+		<tr>
+        <td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/meat.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/waterfall.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/waterfall2meat_100.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/matrix/meat2waterfall.mp4" type="video/mp4">
+            </video>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/lava.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/meat.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/meat2lava_50.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/matrix/lava2meat.mp4" type="video/mp4">
+            </video>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/meat.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/lava.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/recyclegan/evolution/lava2meat_50.mp4" type="video/mp4">
+            </video>
+        </td><td>
+            <video class="vid_recyclegan" autoplay controls muted loop>
+                <source src="../vids/analogies/matrix/meat2lava.mp4" type="video/mp4">
+            </video>
+        </td>
+    </tr>
+
+    
+</table>
+
+
+						</div>
+					</div>
+
+						
+<br/>
+
+					<div class="columns is-justified">
+						<div class="column is-12 is-size-5">
+						Sketch-to-Video Comparison: <br/>
+							(<span class="has-text-weight-bold">Runtime:</span>
+							<!-- <br/> -->
+							Runtime: 66 minutes (200 epochs, 20 secs per epoch), Ours - 1 minute)
+						</div>
+					</div>
+
+
+
+<table style="width:100%;">
+	<tr class="has-text-centered has-text-weight-bold	is-size-4">
+			<td width=16%>Layout</td><td width=17%>Ours</td><td width=17%>Recycle-GAN</td><td width=17%>Layout</td><td width=17%>Ours</td><td width=16%>Recycle-GAN</td>
+	</tr>
+	<tr>
+			<td colspan="3">
+					<video class="vid_recyclegan_mnist" autoplay controls muted loop>
+							<source src="../vids/analogies/recyclegan/mnist_soldiers_compare/0.mp4" type="video/mp4">
+					</video>
+			</td>
+			<td colspan="3">
+					<video class="vid_recyclegan_mnist" autoplay controls muted loop>
+							<source src="../vids/analogies/recyclegan/mnist_soldiers_compare/1.mp4" type="video/mp4">
+					</video>
+			</td>
+	</tr>
+	<tr>
+			<td colspan="3">
+					<video class="vid_recyclegan_mnist" autoplay controls muted loop>
+							<source src="../vids/analogies/recyclegan/mnist_soldiers_compare/2.mp4" type="video/mp4">
+					</video>
+			</td>
+			<td colspan="3">
+					<video class="vid_recyclegan_mnist" autoplay controls muted loop>
+							<source src="../vids/analogies/recyclegan/mnist_soldiers_compare/3.mp4" type="video/mp4">
+					</video>
+			</td>
+	</tr>
+	<tr>
+			<td colspan="3">
+					<video class="vid_recyclegan_mnist" autoplay controls muted loop>
+							<source src="../vids/analogies/recyclegan/mnist_soldiers_compare/4.mp4" type="video/mp4">
+					</video>
+			</td>
+			<td colspan="3">
+					<video class="vid_recyclegan_mnist" autoplay controls muted loop>
+							<source src="../vids/analogies/recyclegan/mnist_soldiers_compare/5.mp4" type="video/mp4">
+					</video>
+			</td>
+	</tr>
+
+</table>
+
+
+				</div>
+			</div>
+			
+
+		</div>
+	</div>
+</section>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+		<div class="container is-full-width">
+
+
+	<!-- <br/> -->
+	<!-- <div class="columns is-centered"> -->
+		<!-- <div class="column has-text-centered has-text-weight-bold"> -->
+			<!-- <a href="#top" class="external-link button is-medium is-warning">Back to Top</a> -->
+		<!-- </div> -->
+	<!-- </div> -->
+
+
+					<h2 class="title is-3">Recycle-GAN training evolution</h2>
+					<div class="columns is-justified">
+						<div class="column is-12">
+						Note the following behvaiour: on early epochs, the spatio-temporal layout is that of the content video, 
+						but the appearance is far from similar to the style video, because it takes time for the model to converge to the correct appearance.
+						As the training evolves, Recycle-GAN tends to overfit the appearance of the style video, but also its spatio-temporal layout.
+						<br/>
+						Therefore, the overall result is a video which is very similar to the style video, with only slight motions similar to the content video.
+						<br/>
+						On top of that, the overall resolution is worse than that of our output.
+						</div>
+					</div>
+
+					
+
+
+					<div class="columns is-centered">
+						<div class="column">
+						
+							<table class="analogies-table" style="width:100%;">
+								<tr class="has-text-centered has-text-weight-bold	is-size-4">
+									<td>Layout</td><td>Epoch 1</td><td>Epoch 25</td><td>Epoch 50</td><td>Epoch 100</td><td>Epoch 200</td><td>Appearance</td>
+								</tr>
+								<tr>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/lava.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/waterfall2lava_1.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/waterfall2lava_25.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/waterfall2lava_50.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/waterfall2lava_100.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/waterfall2lava_200.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/waterfall.mp4" type="video/mp4">
+										</video>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/waterfall.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/lava2waterfall_1.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/lava2waterfall_25.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/lava2waterfall_50.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/lava2waterfall_100.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/lava2waterfall_200.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/lava.mp4" type="video/mp4">
+										</video>
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/meat.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/waterfall2meat_1.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/waterfall2meat_25.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/waterfall2meat_50.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/waterfall2meat_100.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/waterfall2meat_200.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/waterfall.mp4" type="video/mp4">
+										</video>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/waterfall.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/meat2waterfall_1.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/meat2waterfall_25.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/meat2waterfall_50.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/meat2waterfall_100.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/meat2waterfall_200.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/meat.mp4" type="video/mp4">
+										</video>
+									</td>
+								</tr>
+
+
+								<tr>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/meat.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/lava2meat_1.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/lava2meat_25.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/lava2meat_50.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/lava2meat_100.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/lava2meat_200.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/lava.mp4" type="video/mp4">
+										</video>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/lava.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/meat2lava_1.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/meat2lava_25.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/meat2lava_50.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/meat2lava_100.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/meat2lava_200.mp4" type="video/mp4">
+										</video>
+									</td>
+									<td>
+										<video class="vid_recyclegan" autoplay controls muted loop height="100%">
+											<source src="../vids/analogies/recyclegan/evolution/meat.mp4" type="video/mp4">
+										</video>
+									</td>
+								</tr>
+
+							</table>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+</section>
+
+
+
+				<br/>
+				<div class="columns is-centered">
+					<div class="column has-text-centered has-text-weight-bold">
+						<a href="#top" class="external-link button is-medium is-warning">Back to Top</a>
+					</div>
+				</div>
+
+
+
+
+
+</body>
+</html>

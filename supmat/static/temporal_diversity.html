@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="keywords" content="VGPNN, VPNN">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VGPNN: Diverse Generation from a Single Video Made Possible</title>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="../static/css/bulma.min.css">
+  <link rel="stylesheet" href="../static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="../static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="../static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="../static/js/fontawesome.all.min.js"></script>
+  <script src="../static/js/bulma-carousel.min.js"></script>
+  <script src="../static/js/bulma-slider.min.js"></script>
+  <script src="../static/js/index.js"></script>
+</head>
+<body>
+
+
+<!-- Top. -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Diverse Generation from a Single Video Made Possible</h1>
+					<h2 class="title is-2 publication-title">Supplementary Material</h2>
+					<div class="content has-text-centered is-size-4">
+						This page contains many videos, please give it a minute to load
+						<br/>
+						<span style="color: red; font-weight: bold;"> If a video does not appear - please Refresh (F5) </span>
+					</div>
+
+          <div class="column has-text-centered">
+              <span class="link-block"><a href="../index.html" class="external-link button is-normal is-rounded is-dark">Back to Main</a></span>
+          </div>
+					
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="hero">
+  <div class="hero-body">
+		<div class="container is-full-width">					
+					
+					<h2 class="title is-3" id="ablations">Enhancing Temporal Diversity</h2>
+
+					
+					<div class="columns is-centered">
+						<div class="column">
+
+							<div class="columns is-justified">
+								<div class="column is-12 is-size-5">
+								A simple but effective trick to enhance the temporal diversity of our samples is to generate outputs with less frames than in the input video.
+								<br/>
+								Generating samples with similar number of frames as in the input video result in outputs that are "in sync". 
+								Intuitively, the motion of the input video is the only motion that is coherent for this amount of frames. 
+								<br/>
+								Examples for generated sample of same number of frames (original in red):
+								</div>
+							</div>
+
+						</div>
+					</div>
+					
+					
+					
+					<table class="analogies-table" style="width:100%;">
+							<tr>
+									<td>
+											<video class="vid_analogies_gt" autoplay controls muted loop height="100%">
+													<source src="../vids/temporal_diversity/ballet_gt.mp4" type="video/mp4">
+											</video>
+									</td><td>
+											<video class="vid_analogies" autoplay controls muted loop height="100%">
+													<source src="../vids/temporal_diversity/ballet_1.mp4" type="video/mp4">
+											</video>
+									</td><td>
+											<video class="vid_analogies" autoplay controls muted loop height="100%">
+													<source src="../vids/temporal_diversity/ballet_2.mp4" type="video/mp4">
+											</video>
+									</td>
+							</tr>
+					</table>
+	
+					<br/><br/>
+
+
+					<h3 class="title is-4" id="ablations">Generating Shorter Samples</h3>
+
+					<img src="../vids/temporal_diversity/ts.png">
+
+
+					<div class="columns is-centered">
+						<div class="column">
+
+							<div class="columns is-justified">
+								<div class="column is-12 is-size-5">
+								By generating shorter videos allow for shorter motions from different times in the input video, to occur simultaneously in the generated outputs:
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					
+					
+					
+					<table class="carousel-table" style="width:100%; font-weight: bold; font-size: 1em; border-spacing:1%;">
+							<!-- <tr><td>Input Video</td><td></td><td></td></tr> -->
+							<!-- <tr> -->
+								<!-- <td> -->
+									<!-- <video class="vid_generation_gt" autoplay controls muted loop height=100> -->
+										<!-- <source src="./vids/generation/ballet_100_2_gt.mp4" type="video/mp4"> -->
+									<!-- </video> -->
+								<!-- </td> -->
+								<!-- <td> -->
+									<!-- <video class="vid_generation"  id="ballet_0" autoplay controls muted loop height=100> -->
+										<!-- <source src="../vids/generation/ballet_100_2_out0.mp4" type="video/mp4"> -->
+									<!-- </video> -->
+								<!-- </td> -->
+								<!-- <td> -->
+									<!-- <video class="vid_generation"  id="ballet_1" autoplay controls muted loop height=100> -->
+										<!-- <source src="../vids/generation/ballet_100_2_out1.mp4" type="video/mp4"> -->
+									<!-- </video> -->
+								<!-- </td> -->
+							<!-- </tr> -->
+							<tr>
+								<td>
+									<video class="vid_generation"  id="ballet_2" autoplay controls muted loop height=100>
+										<source src="../vids/generation/ballet_100_2_out2.mp4" type="video/mp4">
+									</video>
+								</td>
+								<td>
+									<video class="vid_generation"  id="ballet_3" autoplay controls muted loop height=100>
+										<source src="../vids/generation/ballet_100_2_out3.mp4" type="video/mp4">
+									</video>
+								</td>
+								<td>
+									<video class="vid_generation"  id="ballet_4" autoplay controls muted loop height=100>
+										<source src="../vids/generation/ballet_100_2_out4.mp4" type="video/mp4">
+									</video>
+								</td>
+							</tr>
+						</table>
+
+					
+					
+
+
+		</div>
+	</div>
+</section>
+
+
+			<div class="column has-text-centered">
+					<span class="link-block"><a href="../index.html" class="external-link button is-normal is-rounded is-dark">Back to Main</a></span>
+			</div>
+
+
+
+
+</body>
+</html>
