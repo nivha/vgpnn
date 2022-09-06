@@ -1,6 +1,8 @@
 # VGPNN
 
-This is the repository that contains source code for the [VGPNN website](https://nivha.github.io/vgpnn/).
+This is the repository that contains source code for the [VGPNN Website](https://nivha.github.io/vgpnn/).
+
+For the code itself please visit [VGPNN Source Code](https://github.com/nivha/single_video_generation).
 
 If you find VGPNN useful for your work please cite:
 ```
