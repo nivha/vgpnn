@@ -106,6 +106,49 @@ body {
 .publication-body img {
 }
 
+
+
+
+
+
+a:hover
+{
+text-decoration: none;
+border-bottom: 1px solid blue;
+}
+tr.bordered {
+    border-bottom: 3px solid #000;
+}
+
+
+
+
+/* #linksbyfig > external-link{ */
+    /* width: 25; */
+/* } */
+
+
+
+
+
+
+.slider-navigation-previous {
+	width: 75px;
+	height: 75px;
+	border: 3px solid black;
+	background-color: red;
+	color: white;
+}
+
+.slider-navigation-next {
+	width: 75px;
+	height: 75px;
+	border: 3px solid black;
+	background-color: red;
+	color: white;
+}
+/* slider-navigation-next.note::after { content: "Next"; } */
+/* Carousels */
 .results-carousel {
   overflow: hidden;
 }
@@ -119,25 +162,11 @@ body {
 }
 
 
-.analogies-carousel {
+.sumret-carousel {
   overflow: hidden;
 }
 
-.analogies-carousel .item {
-	margin: 5px;
-  overflow: hidden;
-  border: 1px solid #bbb;
-  border-radius: 10px;
-  padding: 0;
-  font-size: 0;
-}
-
-
-.spatret-carousel {
-  overflow: hidden;
-}
-
-.spatret-carousel .item {
+.sumret-carousel .item {
 	margin: 5px;
   overflow: hidden;
   border: 1px solid #bbb;
@@ -160,6 +189,32 @@ body {
   font-size: 0;
 }
 
+.spatret-carousel {
+  overflow: hidden;
+}
+
+.spatret-carousel .item {
+	margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+}
+
+
+.analogies-carousel {
+  overflow: hidden;
+}
+
+.analogies-carousel .item {
+	margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+}
 
 .cinp-carousel {
   overflow: hidden;
@@ -174,7 +229,20 @@ body {
   font-size: 0;
 }
 
+.comparison-carousel {
+  overflow: hidden;
+}
 
+
+/* *** */
+.bold {
+	text-font-weight: bold;
+}
+
+
+.input-video-text {
+	color: #ff6961;
+}
 
 .vid_generation {
 	image-rendering: pixelated;
@@ -182,8 +250,23 @@ body {
 }
 .vid_generation_gt {
 	image-rendering: pixelated;
-	border: 6px solid #78A2CC;
+	border: 6px solid #ff6961;
 }
+
+/* .video-container { position:relative; } */
+/* .video-container vid_generation_gt { */
+    /* position:relative; */
+    /* z-index:0; */
+/* } */
+/* .video-overlay { */
+    /* position:absolute; */
+    /* top:0; */
+    /* left:5%; */
+    /* z-index:1; */
+		/* font-size: 35px; */
+		/* color: white; */
+		/* font-family: "Times New Roman", Times, serif; */
+/* } */
 
 .vid_analogies {
 	image-rendering: pixelated;
@@ -191,26 +274,63 @@ body {
 }
 .vid_analogies_gt {
 	image-rendering: pixelated;
-	border: 6px solid transparent;
+	border: 6px solid #ff6961;
 }
+
+/* .analogies_w { */
+	
+/* } */
+/* .analogies_h { */
+/* } */
+
 
 .vid_analogies_result {
 	image-rendering: pixelated;
 	border: 6px solid transparent;
+	/* width: 256px; */
 	height: 200px;
 }
 .vid_analogies_content {
 	image-rendering: pixelated;
-	border: 6px solid transparent;
+	border: 6px solid #ff6961;
+	/* border: 6px solid #CC918D; */
+	/* width: 256px; */
 	height: 200px;
 }
 .vid_analogies_style {
 	image-rendering: pixelated;
-	border: 6px solid transparent;
+	border: 6px solid #ff6961;
+	/* border: 6px solid #78A2CC; */
+	/* width: 256px; */
 	height: 200px;
 }
 
 
+
+
+.vid_comparison {
+	image-rendering: pixelated;
+	border: 6px solid transparent;
+	/* min-width: 100%;  */
+  /* min-height: 100%;  */
+	/* width: 100%;  */
+  /* height: auto;  */
+  width: 608px;
+  height: 342px; 
+	/* object-fit: cover; */
+	/* overflow: hidden; */
+}
+
+
+/* .vid_comparison { */
+  /* min-width: 640px; */
+  /* min-height: 360px;  */
+  /* overflow: hidden; */
+/* } */
+
+.vid_comparison.gt {
+		border: 6px solid #ff6961  !important;
+}
 
 
 
@@ -241,9 +361,35 @@ body {
 .color-box.extended:before{
   background-color:#C1CC64;
 }
-.color-box.original:before{
-  background-color:#78A2CC;
+.color-box.input:before{
+  background-color:#ff6961;
+	/* background-color:#78A2CC; */
 }
-.color-box.style:before{
-  background-color:#EED7CE;
+
+
+/* button { */
+  /* background: #ccc; */
+  /* cursor: pointer; */
+  /* border-top: solid 2px #eaeaea; */
+  /* border-left: solid 2px #eaeaea; */
+  /* border-bottom: solid 2px #777; */
+  /* border-right: solid 2px #777; */
+  /* padding: 5px 5px; */
+/* } */
+
+/* button.down { */
+  /* background: #bbb; */
+  /* border-top: solid 5px #777; */
+  /* border-left: solid 5px #777; */
+  /* border-bottom: solid 5px #eaeaea; */
+  /* border-right: solid 5px #eaeaea; */
+/* } */
+
+.vid_recyclegan{
+	min-width: 256px;
+}
+
+.vid_recyclegan_mnist{
+	image-rendering: pixelated;
+	border: 6px solid transparent;
 }

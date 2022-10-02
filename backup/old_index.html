@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="keywords" content="VGPNN, VPNN">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VGPNN: Diverse Generation from a Single Video Made Possible</title>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-JZY03JWJF6"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-JZY03JWJF6');
+	</script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<!-- Top. -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">VGPNN: Diverse Generation from a Single Video Made Possible</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://nivha.github.io/">Niv Haim</a>*,
+			</span>
+            <span class="author-block">
+              <a href="https://www.semanticscholar.org/author/Ben-Feinstein/4478112">Ben Feinsten</a>*,
+			</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=MaDeUsoAAAAJ">Niv Granot</a>,
+            </span>
+            <span class="author-block">
+              <a href="http://www.wisdom.weizmann.ac.il/~/assafsho/">Assaf Shocher</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.weizmann.ac.il/math/bagon/home">Shai Bagon</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.weizmann.ac.il/math/dekel/">Tali Dekel</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.weizmann.ac.il/math/irani/">Michal Irani</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Weizmann Institute of Science, Rehovot, Israel</span>
+          </div>
+					<div class="is-size-6 publication-authors">
+            <span class="author-block">* Equal contribution</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://nivha.github.io/vgpnn/VGPNN.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="http://arxiv.org/abs/2109.08591"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/nivha/single_video_generation"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+							<span class="link-block">
+                <a href="./supmat/index.html"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-archive"></i>
+                  </span>
+                  <span>Supplementary</span>
+                  </a>
+              </span>
+
+            </div>
+						
+						<div class="content has-text-centered">
+							(This page contains many videos, please give it a minute to load)
+						</div>
+
+						
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Generation Carousel. -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+	
+    <div class="container has-text-centered">
+				<h2 class="title is-3">Generated Video Samples from a Single Video</h2>
+				<div class="content has-text-centered is-size-5">
+					Original video <span class="color-box original">&nbsp;</span> (top-left), all others are generated
+				</div>
+
+				<div id="results-carousel" class="carousel results-carousel">
+					
+			
+					<div class="item item-dutch2">
+								<table class="carousel-table" style="width:100%; font-weight: bold; font-size: 1em; border-spacing:1%;">
+									<tr>
+										<td>
+											<video class="vid_generation_gt"  id="dutch2_gt" autoplay controls muted loop height=100>
+												<source src="./vids/generation/dutch2_gt.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="dutch2_0" autoplay controls muted loop height=100>
+												<source src="./vids/generation/dutch2_out0.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="dutch2_1" autoplay controls muted loop height=100>
+												<source src="./vids/generation/dutch2_out1.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<video class="vid_generation"  id="dutch2_2" autoplay controls muted loop height=100>
+												<source src="./vids/generation/dutch2_out2.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="dutch2_3" autoplay controls muted loop height=100>
+												<source src="./vids/generation/dutch2_out3.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="dutch2_4" autoplay controls muted loop height=100>
+												<source src="./vids/generation/dutch2_out4.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+								</table>
+					</div>
+					
+					<div class="item item-ballet">
+								<table class="carousel-table" style="width:100%; font-weight: bold; font-size: 1em; border-spacing:1%;">
+									<tr>
+										<td>
+											<video class="vid_generation_gt"  id="ballet_gt" autoplay controls muted loop height=100>
+												<source src="./vids/generation/ballet_100_2_gt.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="ballet_0" autoplay controls muted loop height=100>
+												<source src="./vids/generation/ballet_100_2_out0.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="ballet_1" autoplay controls muted loop height=100>
+												<source src="./vids/generation/ballet_100_2_out1.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<video class="vid_generation"  id="ballet_2" autoplay controls muted loop height=100>
+												<source src="./vids/generation/ballet_100_2_out2.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="ballet_3" autoplay controls muted loop height=100>
+												<source src="./vids/generation/ballet_100_2_out3.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="ballet_4" autoplay controls muted loop height=100>
+												<source src="./vids/generation/ballet_100_2_out4.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+								</table>
+					</div>
+					
+					<div class="item item-junction">
+								<table class="carousel-table" style="width:100%; font-weight: bold; font-size: 1em; border-spacing:1%;">
+									<tr>
+										<td>
+											<video class="vid_generation_gt"  id="junction_gt" autoplay controls muted loop height=100>
+												<source src="./vids/generation/junction_110_gt.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="junction_0" autoplay controls muted loop height=100>
+												<source src="./vids/generation/junction_110_out0.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="junction_1" autoplay controls muted loop height=100>
+												<source src="./vids/generation/junction_110_out1.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<video class="vid_generation"  id="junction_2" autoplay controls muted loop height=100>
+												<source src="./vids/generation/junction_110_out2.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="junction_3" autoplay controls muted loop height=100>
+												<source src="./vids/generation/junction_110_out3.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="junction_4" autoplay controls muted loop height=100>
+												<source src="./vids/generation/junction_110_out4.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+								</table>
+					</div>
+					
+					<div class="item item-airbaloons">
+								<table class="carousel-table" style="width:100%; font-weight: bold; font-size: 1em; border-spacing:1%;">
+									<tr>
+										<td>
+											<video class="vid_generation_gt"  id="airbaloons_gt" autoplay controls muted loop height=100>
+												<source src="./vids/generation/air_baloons_hpvaegan_12345678912_gt.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="airbaloons_0" autoplay controls muted loop height=100>
+												<source src="./vids/generation/air_baloons_hpvaegan_12345678912_out0.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="airbaloons_1" autoplay controls muted loop height=100>
+												<source src="./vids/generation/air_baloons_hpvaegan_12345678912_out1.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<video class="vid_generation"  id="airbaloons_2" autoplay controls muted loop height=100>
+												<source src="./vids/generation/air_baloons_hpvaegan_12345678912_out2.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="airbaloons_3" autoplay controls muted loop height=100>
+												<source src="./vids/generation/air_baloons_hpvaegan_12345678912_out3.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="airbaloons_4" autoplay controls muted loop height=100>
+												<source src="./vids/generation/air_baloons_hpvaegan_12345678912_out4.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+								</table>
+					</div>
+					
+					<div class="item item-pool">
+								<table class="carousel-table" style="width:100%; font-weight: bold; font-size: 1em; border-spacing:1%;">
+									<tr>
+										<td>
+											<video class="vid_generation_gt"  id="pool_gt" autoplay controls muted loop height=100>
+												<source src="./vids/generation/pool_73_gt.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="pool_0" autoplay controls muted loop height=100>
+												<source src="./vids/generation/pool_73_out0.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="pool_1" autoplay controls muted loop height=100>
+												<source src="./vids/generation/pool_73_out1.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<video class="vid_generation"  id="pool_2" autoplay controls muted loop height=100>
+												<source src="./vids/generation/pool_73_out2.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="pool_3" autoplay controls muted loop height=100>
+												<source src="./vids/generation/pool_73_out3.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="pool_4" autoplay controls muted loop height=100>
+												<source src="./vids/generation/pool_73_out4.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+								</table>
+					</div>
+					
+					<div class="item item-birds">
+								<table class="carousel-table" style="width:100%; font-weight: bold; font-size: 1em; border-spacing:1%;">
+									<tr>
+										<td>
+											<video class="vid_generation_gt"  id="birds_gt" autoplay controls muted loop height=100>
+												<source src="./vids/generation/birds32_80_gt.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="birds_0" autoplay controls muted loop height=100>
+												<source src="./vids/generation/birds32_80_out0.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="birds_1" autoplay controls muted loop height=100>
+												<source src="./vids/generation/birds32_80_out1.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<video class="vid_generation"  id="birds_2" autoplay controls muted loop height=100>
+												<source src="./vids/generation/birds32_80_out2.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="birds_3" autoplay controls muted loop height=100>
+												<source src="./vids/generation/birds32_80_out3.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="birds_4" autoplay controls muted loop height=100>
+												<source src="./vids/generation/birds32_80_out4.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+								</table>
+					</div>
+					
+					<div class="item item-dutch3">
+								<table class="carousel-table" style="width:100%; font-weight: bold; font-size: 1em; border-spacing:1%;">
+									<tr>
+										<td>
+											<video class="vid_generation_gt"  id="dutch3_gt" autoplay controls muted loop height=100>
+												<source src="./vids/generation/dutch3_gt.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="dutch3_0" autoplay controls muted loop height=100>
+												<source src="./vids/generation/dutch3_out0.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="dutch3_1" autoplay controls muted loop height=100>
+												<source src="./vids/generation/dutch3_out1.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<video class="vid_generation"  id="dutch3_2" autoplay controls muted loop height=100>
+												<source src="./vids/generation/dutch3_out2.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="dutch3_3" autoplay controls muted loop height=100>
+												<source src="./vids/generation/dutch3_out3.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="dutch3_4" autoplay controls muted loop height=100>
+												<source src="./vids/generation/dutch3_out4.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+								</table>
+					</div>
+					
+					<div class="item item-boatrace">
+								<table class="carousel-table" style="width:100%; font-weight: bold; font-size: 1em; border-spacing:1%;">
+									<tr>
+										<td>
+											<video class="vid_generation_gt"  id="boatrace_gt" autoplay controls muted loop height=100>
+												<source src="./vids/generation/boat_race_long_tmPqO_TGa-U_gt.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="boatrace_0" autoplay controls muted loop height=100>
+												<source src="./vids/generation/boat_race_long_tmPqO_TGa-U_out0.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="boatrace_1" autoplay controls muted loop height=100>
+												<source src="./vids/generation/boat_race_long_tmPqO_TGa-U_out1.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<video class="vid_generation"  id="boatrace_2" autoplay controls muted loop height=100>
+												<source src="./vids/generation/boat_race_long_tmPqO_TGa-U_out2.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="boatrace_3" autoplay controls muted loop height=100>
+												<source src="./vids/generation/boat_race_long_tmPqO_TGa-U_out3.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="boatrace_4" autoplay controls muted loop height=100>
+												<source src="./vids/generation/boat_race_long_tmPqO_TGa-U_out4.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+								</table>
+					</div>
+					
+					<div class="item item-base">
+								<table class="carousel-table" style="width:100%; font-weight: bold; font-size: 1em; border-spacing:1%;">
+									<tr>
+										<td>
+											<video class="vid_generation_gt"  id="base_gt" autoplay controls muted loop height=100>
+												<source src="./vids/generation/base_nRxSUkZYeOE_gt.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="base_0" autoplay controls muted loop height=100>
+												<source src="./vids/generation/base_nRxSUkZYeOE_out0.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="base_1" autoplay controls muted loop height=100>
+												<source src="./vids/generation/base_nRxSUkZYeOE_out1.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<video class="vid_generation"  id="base_2" autoplay controls muted loop height=100>
+												<source src="./vids/generation/base_nRxSUkZYeOE_out2.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="base_3" autoplay controls muted loop height=100>
+												<source src="./vids/generation/base_nRxSUkZYeOE_out3.mp4" type="video/mp4">
+											</video>
+										</td>
+										<td>
+											<video class="vid_generation"  id="base_4" autoplay controls muted loop height=100>
+												<source src="./vids/generation/base_nRxSUkZYeOE_out4.mp4" type="video/mp4">
+											</video>
+										</td>
+									</tr>
+								</table>
+					</div>  
+
+				</div>
+				
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Abstract. -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+					<p>
+						<!-- Most advanced video generation and manipulation methods train on a large collection of videos. As such, they are restricted to the types of video dynamics they train on.  -->
+						<!-- To overcome this limitation, GANs trained on a single video were recently proposed. While these provide more flexibility to a wide variety of video dynamics,  -->
+						<!-- they require days to train on a single tiny input video, rendering them impractical.  -->
+					<!-- </p>	 -->
+					<!-- <p> -->
+						<!-- In this paper we present a fast and practical method for video generation and manipulation from a single natural video, which generates diverse high-quality video outputs within seconds (for benchmark videos). -->
+						<!-- Our method can be further applied to full-HD video clips within minutes.  -->
+						<!-- Our approach is inspired by a recent advanced patch-nearest-neighbor based approach [<a href="https://www.wisdom.weizmann.ac.il/~vision/gpnn/">Granot et al., 2021</a>], which was shown to significantly outperform single-image GANs, both in run-time and in visual quality.  -->
+					<!-- </p> -->
+					<!-- <p> -->
+						<!-- Here we generalize this approach from images to videos, by casting classical space-time patch-based methods as a new generative video model.  -->
+						<!-- We adapt the generative image patch nearest neighbor approach to efficiently cope with the huge number of space-time patches in a single video.  -->
+						<!-- Our method generates more realistic and higher quality results than single-video GANs (confirmed by quantitative and qualitative evaluations).  -->
+						<!-- Moreover, it is disproportionally faster (runtime reduced from several days to seconds).  -->
+						<!-- Other than diverse video generation, we demonstrate several other challenging video applications,  -->
+						<!-- including spatio-temporal video retargeting (e.g., video extension & video summarization), video structural analogies and conditional video-inpainting. -->
+						GANs are able to perform generation and manipulation tasks, trained on a single video. However, these single video GANs require unreasonable amount of time to train on a single video, rendering them almost impractical. 
+						In this paper we question the necessity of a GAN for generation from a single video, and introduce a non-parametric baseline for a variety of generation and manipulation tasks.
+						Inspired by <a href="https://www.wisdom.weizmann.ac.il/~vision/gpnn/">Granot et al. (2021)</a>, we revive classical space-time patches-nearest-neighbors approaches and adapt them to a scalable unconditional generative model, without any learning.
+						This simple baseline surprisingly outperforms single-video GANs in visual quality and realism (confirmed by quantitative and qualitative evaluations), and is disproportionately faster (runtime reduced from several days to seconds). 
+						Other than diverse video generation, we demonstrate other applications using the same framework, including video analogies and spatio-temporal retargeting. Our proposed approach is easily scaled to Full-HD videos.
+						These observations show that the classical approaches, if adapted correctly, significantly outperform heavy deep learning machinery for these tasks. 
+						This sets a new baseline for single-video generation and manipulation tasks, and no less important --  makes diverse generation from a single video practically possible for the first time. 
+					</p>
+		
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+		
+		
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Applications. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!-- <h2 class="title is-3">More application</h2> -->
+
+
+        <!-- Video Analogies. -->
+        <!-- <h2 class="title is-3">Video Analogies</h2> -->
+        				
+				<!-- <div class="columns is-justified"> -->
+					<!-- <div class="column is-12 is-size-5"> -->
+          <!-- <p> -->
+            <!-- We can use our method to perform video analogies (or "video style transfer"), by transfering the motion from a content video into the patch-distribution of the style video. -->
+          <!-- </p> -->
+					<!-- </div> -->
+				<!-- </div> -->
+        <h2 class="title is-3" id="analogies">Video Analogies</h2>
+				<!-- <br/> -->
+				<div class="columns is-justified">
+					<div class="column is-6 is-size-6">
+          <p>
+						<!-- We use our method to perform video analogies (or "video style transfer"), by transfering the motion from a content video into the patch-distribution of the style video. -->
+						<!-- Video analogies generate a video whose spatio-temporal layout is taken from a <i>content</i> video, and whose appearance and dynamics are taken from a <i>style</i> video. -->
+						<!-- <br/> -->
+            Analogies between all pairs of the four Input Videos (marked <span class="color-box original">&nbsp;</span>) on the diagonal.
+						<br/>
+						Each generated video is the combination of an input video from its row (spatio-temporal layout) and an input video from its column (appearance).
+          </p>
+					</div>
+				</div>
+
+				<div class="content is-centered is-borderless" style="text-align: center">
+					<video autoplay controls muted loop>
+							<source src="./vids/analogies/analogies_concat.mp4" type="video/mp4">
+					</video>
+				</div>
+
+				<!-- <div class="content is-centered is-borderless" style="text-align: center"> -->
+						<!-- <table class="analogies-table" style="width:100%;"> -->
+								<!-- <tr> -->
+										<!-- <td> -->
+												<!-- <video class="vid_analogies_gt analogies_w" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/waterfall_input.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td><td> -->
+												<!-- <video class="vid_analogies analogies_w" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/waterfall2lava.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td><td> -->
+												<!-- <video class="vid_analogies analogies_w" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/waterfall2meat.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td><td> -->
+												<!-- <video class="vid_analogies analogies_w" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/waterfall2sheep.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td> -->
+								<!-- </tr> -->
+								<!-- <tr> -->
+										<!-- <td> -->
+												<!-- <video class="vid_analogies analogies_w" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/lava2waterfall.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td><td> -->
+												<!-- <video class="vid_analogies_gt analogies_w" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/lava_input.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td><td> -->
+												<!-- <video class="vid_analogies analogies_w" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/lava2meat.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td><td> -->
+												<!-- <video class="vid_analogies analogies_w" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/lava2sheep.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td> -->
+								<!-- </tr> -->
+								<!-- <tr> -->
+										<!-- <td> -->
+												<!-- <video class="vid_analogies analogies_w" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/meat2waterfall.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td><td> -->
+												<!-- <video class="vid_analogies analogies_w" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/meat2lava.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td><td> -->
+												<!-- <video class="vid_analogies_gt analogies_w" id="meat" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/meat_input.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td><td> -->
+												<!-- <video class="vid_analogies analogies_w" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/meat2sheep.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td> -->
+								<!-- </tr> -->
+								<!-- <tr> -->
+										<!-- <td> -->
+												<!-- <video class="vid_analogies analogies_h" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/sheep2waterfall.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td><td> -->
+												<!-- <video class="vid_analogies analogies_h" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/sheep2lava.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td><td> -->
+												<!-- <video class="vid_analogies analogies_h" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/sheep2meat.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td><td> -->
+												<!-- <video class="vid_analogies_gt analogies_h" autoplay controls muted loop> -->
+														<!-- <source src="./vids/analogies/fs/sheep_input.mp4" type="video/mp4"> -->
+												<!-- </video> -->
+										<!-- </td> -->
+								<!-- </tr> -->
+								
+						<!-- </table> -->
+				<!-- </div> -->
+
+					<br/>
+				<!-- Sketch to Video -->
+        <h2 class="title is-3" id="sketch2vid">Sketch to Video</h2>
+
+					<div class="columns is-justified">
+						<div class="column is-8 is-size-6">
+						<p>
+							When the spatio-temporal layout is taken from a sketch we call it Sketch-to-Video:
+						</p>
+						</div>
+					</div>
+
+					<div class="columns is-centered has-text-centered"> 
+						<div class="column is-4">
+							<video class="" id="analogies_exp" autoplay controls muted loop>
+								<source src="./vids/analogies/analogies_exp.mp4" type="video/mp4">
+							</video>
+						</div>
+					</div>
+
+
+				<div class="columns is-justified">
+					<div class="column is-8 is-size-6">
+          <p>
+            And here are the results of our video analogies using the same style video (marked <span class="color-box style">&nbsp;</span>) as above with different content videos (smooth transitions of mnist digits from one to the next):
+          </p>
+					</div>
+				</div>
+
+			
+				<!-- <div class="content is-centered is-borderless" style="text-align: center"> -->
+					<!-- <table class="analogies-table" style="width:100%;" > -->
+						<!-- <tr> -->
+							<!-- <td> -->
+								<!-- <video class="vid_analogies"  id="analogies_0_r" autoplay controls muted loop height=100> -->
+									<!-- <source src="./vids/analogies/0_r.mp4" type="video/mp4"> -->
+								<!-- </video> -->
+							<!-- </td> -->
+							<!-- <td> -->
+								<!-- <video class="vid_analogies"  id="analogies_1_r" autoplay controls muted loop height=100> -->
+									<!-- <source src="./vids/analogies/1_r.mp4" type="video/mp4"> -->
+								<!-- </video> -->
+							<!-- </td> -->
+							<!-- <td> -->
+								<!-- <video class="vid_analogies"  id="analogies_2_r" autoplay controls muted loop height=100> -->
+									<!-- <source src="./vids/analogies/2_r.mp4" type="video/mp4"> -->
+								<!-- </video> -->
+							<!-- </td> -->
+						<!-- </tr> -->
+						<!-- <tr> -->
+							<!-- <td> -->
+								<!-- <video class="vid_analogies"  id="analogies_3_r" autoplay controls muted loop height=100> -->
+									<!-- <source src="./vids/analogies/3_r.mp4" type="video/mp4"> -->
+								<!-- </video> -->
+							<!-- </td> -->
+							<!-- <td> -->
+								<!-- <video class="vid_analogies"  id="analogies_4_r" autoplay controls muted loop height=100> -->
+									<!-- <source src="./vids/analogies/4_r.mp4" type="video/mp4"> -->
+								<!-- </video> -->
+							<!-- </td> -->
+							<!-- <td> -->
+								<!-- <video class="vid_analogies"  id="analogies_5_r" autoplay controls muted loop height=100> -->
+									<!-- <source src="./vids/analogies/5_r.mp4" type="video/mp4"> -->
+								<!-- </video> -->
+							<!-- </td> -->
+						<!-- </tr> -->
+						<!-- <tr> -->
+							<!-- <td> -->
+								<!-- <video class="vid_analogies"  id="analogies_6_r" autoplay controls muted loop height=100> -->
+									<!-- <source src="./vids/analogies/6_r.mp4" type="video/mp4"> -->
+								<!-- </video> -->
+							<!-- </td> -->
+							<!-- <td> -->
+								<!-- <video class="vid_analogies"  id="analogies_7_r" autoplay controls muted loop height=100> -->
+									<!-- <source src="./vids/analogies/7_r.mp4" type="video/mp4"> -->
+								<!-- </video> -->
+							<!-- </td> -->
+							<!-- <td> -->
+								<!-- <video class="vid_analogies"  id="analogies_8_r" autoplay controls muted loop height=100> -->
+									<!-- <source src="./vids/analogies/8_r.mp4" type="video/mp4"> -->
+								<!-- </video> -->
+							<!-- </td> -->
+						<!-- </tr> -->
+
+					<!-- </table> -->
+
+				<!-- </div> -->
+				
+				
+				
+					<div class="container has-text-centered">
+						<div id="analogies-carousel" class="carousel analogies-carousel">
+							<div class="item">
+								<table class="analogies-table" style="width:100%;">
+										<!-- <tr> -->
+												<!-- <td colspan="6"> -->
+														<!-- <video class="vid_analogies_style" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_soldiers/b.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td> -->
+										<!-- </tr> -->
+										<tr>
+											<td colspan="6">
+												<video autoplay controls muted loop>
+														<source src="./vids/analogies/soldiers_concat.mp4" type="video/mp4">
+												</video>
+											</td>
+										</tr>
+
+										<!-- <tr> -->
+												<!-- <td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/0_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_soldiers/0_r.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/1_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_soldiers/1_r.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/2_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_soldiers/2_r.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td> -->
+										<!-- </tr> -->
+										<!-- <tr> -->
+												<!-- <td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/3_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_soldiers/3_r.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/4_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_soldiers/4_r.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/5_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_soldiers/5_r.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td> -->
+										<!-- </tr> -->
+										<!-- <tr> -->
+												<!-- <td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/6_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_soldiers/6_r.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/7_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_soldiers/7_r.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/8_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_soldiers/8_r.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td> -->
+										<!-- </tr> -->
+								</table>
+							</div>
+							
+							<div class="item">
+								<table class="analogies-table" style="width:100%;">
+										<!-- <tr> -->
+												<!-- <td colspan="6"> -->
+														<!-- <video class="vid_analogies_style" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_sheep/b.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td> -->
+										<!-- </tr> -->
+										<tr>
+											<td colspan="6">
+												<video autoplay controls muted loop>
+														<source src="./vids/analogies/sheep_concat.mp4" type="video/mp4">
+												</video>
+											</td>
+										</tr>
+										<!-- <tr> -->
+												<!-- <td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/0_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_sheep/0.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/1_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_sheep/1.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/2_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_sheep/2.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td> -->
+										<!-- </tr> -->
+										<!-- <tr> -->
+												<!-- <td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/3_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_sheep/3.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/4_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_sheep/4.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/5_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_sheep/5.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td> -->
+										<!-- </tr> -->
+										<!-- <tr> -->
+												<!-- <td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/6_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_sheep/6.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/7_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_sheep/7.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_content" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist/8_a.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td><td> -->
+														<!-- <video class="vid_analogies_result" autoplay controls muted loop height=100> -->
+																<!-- <source src="./vids/analogies/mnist_sheep/8.mp4" type="video/mp4"> -->
+														<!-- </video> -->
+												<!-- </td> -->
+										<!-- </tr> -->
+										
+								</table>
+							</div>
+							
+						</div>
+					</div>
+
+				
+				<!--/ Video Analogies. -->
+				
+				<br/>
+
+        <!-- Spatial Retargeting. -->
+        <h2 class="title is-3">Retargeting over Spatial Dimension</h2>
+        
+				<!-- <div class="columns is-vcentered"> -->
+          <!-- <div class="column is-7"> -->
+							<!-- <video  id="retargeting_baloons" autoplay controls muted loop height=100> -->
+								<!-- <source src="./vids/retargeting/baloons_cat.mp4" type="video/mp4"> -->
+							<!-- </video> -->
+          <!-- </div> -->
+          <!-- <div class="column is-5"> -->
+							<!-- <video  id="retargeting_choir" autoplay controls muted loop height=100> -->
+								<!-- <source src="./vids/retargeting/choir_cat.mp4" type="video/mp4"> -->
+							<!-- </video> -->
+          <!-- </div> -->
+        <!-- </div> -->
+				<div class="columns is-justified">
+					<div class="column is-8 is-size-6">
+						<p>
+							Input video (marked <span class="color-box original">&nbsp;</span>) is in top-left. The rest are retargeted to different spatial shapes.
+						</p>
+					</div>
+				</div>
+
+				<div class="container has-text-centered">
+				
+					<div id="spatret-carousel" class="carousel spatret-carousel">
+						<div class="item">
+									<video autoplay controls muted loop height=100>
+										<source src="./vids/retargeting/baloons_cat.mp4" type="video/mp4">
+									</video>
+						</div>
+						<div class="item">
+									<video autoplay controls muted loop height=100>
+										<source src="./vids/retargeting/choir_cat.mp4" type="video/mp4">
+									</video>
+						</div>
+						<div class="item">
+									<video autoplay controls muted loop height=100>
+										<source src="./vids/retargeting/birds_cat.mp4" type="video/mp4">
+									</video>
+						</div>
+					</div>
+				</div>
+
+				<!--/ Spatial Retargeting. -->
+
+        <br/>
+
+        <h2 class="title is-3">Retargeting over Temporal Dimension</h2>
+								
+				<div class="columns is-justified is-size-5">
+					<div class="column is-8 is-size-6">
+          <p>
+            Top: Original video (marked <span class="color-box original">&nbsp;</span>)
+						<br/>
+						Bottom: Extended (marked <span class="color-box extended">&nbsp;</span>) or Summarized (marked <span class="color-box shortened">&nbsp;</span>)
+          </p>
+					</div>
+				</div>
+				
+				<!-- Temporal Retargeting. -->
+				<div class="container has-text-centered">
+				
+					<div id="tempret-carousel" class="carousel tempret-carousel">
+						<div class="item">
+									<video autoplay controls muted loop height=100>
+										<source src="./vids/retargeting/temporal/ballet_long.mp4" type="video/mp4">
+									</video>
+						</div>
+						<div class="item">
+									<video autoplay controls muted loop height=100>
+										<source src="./vids/retargeting/temporal/dog_long.mp4" type="video/mp4">
+									</video>
+						</div>
+						<div class="item">
+									<video autoplay controls muted loop height=100>
+										<source src="./vids/retargeting/temporal/goldfish2_long.mp4" type="video/mp4">
+									</video>
+						</div>
+						<div class="item">
+									<video autoplay controls muted loop height=100>
+										<source src="./vids/retargeting/temporal/ballet_short.mp4" type="video/mp4">
+									</video>
+						</div>
+						<div class="item">
+									<video autoplay controls muted loop height=100>
+										<source src="./vids/retargeting/temporal/dog_short.mp4" type="video/mp4">
+									</video>
+						</div>
+						<div class="item">
+									<video autoplay controls muted loop height=100>
+										<source src="./vids/retargeting/temporal/piano_short.mp4" type="video/mp4">
+									</video>
+						</div>
+						<div class="item">
+									<video autoplay controls muted loop height=100>
+										<source src="./vids/retargeting/temporal/weird_man_short.mp4" type="video/mp4">
+									</video>
+						</div>
+
+					</div>
+					
+				</div>
+				<!--/ Temporal Retargeting. -->
+	
+				<br/>
+	
+	        <!-- Conditional Inpainting. -->
+        <h2 class="title is-3">Conditional Inpainting</h2>
+				
+				<div class="columns is-justified is-size-5">
+					<div class="column is-8 is-size-6">
+          <p>
+            We can add/remove parts of the video by marking the relevant region. The color will be used to guide our method to replace it with an object from the video with similar color.
+						<br/>
+						Original video <span class="color-box original">&nbsp;</span> on top, middle video is input to the algorithm.
+          </p>
+					</div>
+				</div>
+				
+        <div class="columns is-vcentered">					
+					<div class="container has-text-centered">
+						<div id="cinp-carousel" class="carousel cinp-carousel" height=500px>
+							<div class="item">
+										<video autoplay controls muted loop height=100>
+											<source src="./vids/cinpainting/cinp_soccer.mp4" type="video/mp4">
+										</video>
+							</div>
+							<div class="item">
+										<video autoplay controls muted loop height=100>
+											<source src="./vids/cinpainting/cinp_soccer2.mp4" type="video/mp4">
+										</video>
+							</div>
+							<div class="item">
+										<video autoplay controls muted loop height=100>
+											<source src="./vids/cinpainting/cinp_soccer3.mp4" type="video/mp4">
+										</video>
+							</div>
+							<div class="item">
+										<video autoplay controls muted loop height=100>
+											<source src="./vids/cinpainting/cinp_birds.mp4" type="video/mp4">
+										</video>
+							</div>
+							<div class="item">
+										<video autoplay controls muted loop height=100>
+											<source src="./vids/cinpainting/cinp_basketball.mp4" type="video/mp4">
+										</video>
+							</div>
+						</div>
+					</div>					
+        </div>
+				<!--/ Conditional Inpainting. -->
+
+	
+			</div>
+		</div>
+		
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{haim2021vgpnn,
+  author    = {Haim, Niv and Feinstein, Ben and Granot, Niv and Shocher, Assaf and Bagon, Shai and Dekel, Tali and Irani, Michal},
+  title     = {Diverse Generation from a Single Video Made Possible},
+  journal   = {arXiv preprint arXiv:2109.08591},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/nivha" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8 has-text-centered">
+        <div class="content">
+          <p>
+            This website is forked from the
+						<a href="https://nerfies.github.io/">Nerfies website</a> and 						
+						<a href="https://github.com/nerfies/nerfies.github.io">source code</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
